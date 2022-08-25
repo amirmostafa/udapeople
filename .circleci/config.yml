@@ -246,8 +246,9 @@ jobs:
           command: |
 
             cp backend/package.json .circleci/ansible/roles/deploy/files
-            ls .circleci/ansible/roles/deploy/files
-            ls backend
+            cd .circleci/ansible/roles/deploy/files
+            ls
+            
             # cd .circleci/ansible
             # echo "Contents  of the inventory.txt file is -------"
             # cat inventory.txt

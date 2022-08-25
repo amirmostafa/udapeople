@@ -8,7 +8,6 @@ commands:
           name: Destroy environments
           when: on_fail
           command: |
-            apk add --update awscli 
             aws cloudformation delete-stack --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}
             aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
 
@@ -20,7 +19,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS = curl https://kvdb.io/N7cmQg1DwZbADh2Hu3NncF/hello
+            SUCCESS = curl  --insecure https://kvdb.io/N7cmQg1DwZbADh2Hu3NncF/hello
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
@@ -192,7 +191,7 @@ jobs:
           command: |   
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-            curl https://kvdb.io/7KEgYRM2w3xUFfkutvtjtU/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+            curl --insecure https://kvdb.io/7KEgYRM2w3xUFfkutvtjtU/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       - destroy-environment  
 

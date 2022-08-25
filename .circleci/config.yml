@@ -19,7 +19,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS = curl  --insecure https://kvdb.io/N7cmQg1DwZbADh2Hu3NncF/hello
+            SUCCESS=$(curl --insecure  https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7})
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
@@ -206,7 +206,8 @@ jobs:
           name: Install dependencies
           command: |
             curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -
-            yum -y install nodejs curl tar gzip
+            yum -y --enablerepo=nodesource install nodejs
+            yum -y install curl tar gzip
       - run:
           name: Get backend url
           command: |

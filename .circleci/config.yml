@@ -206,7 +206,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -
+            curl --silent --location https://rpm.nodesource.com/setup_17.x | bash -
             yum -y install nodejs curl tar gzip
       - run:
           name: Get backend url

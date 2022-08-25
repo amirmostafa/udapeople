@@ -207,8 +207,7 @@ jobs:
           name: Install dependencies
           command: |
             curl --silent --location https://rpm.nodesource.com/setup_18.x | bash -
-            yum -y  install nodejs --enablerepo=nodesource clean metadata
-            yum -y install curl tar gzip
+            yum -y install nodejs curl tar gzip
       - run:
           name: Get backend url
           command: |

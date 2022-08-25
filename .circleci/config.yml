@@ -205,7 +205,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update curl nodejs npm tar gzip
+            yum install curl nodejs npm tar gzip
       - run:
           name: Get backend url
           command: |
@@ -239,7 +239,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yum install -y ansible curl tar gzip nodejs npm
+            apk add --update ansible curl tar gzip nodejs npm
       - run:
           name: Deploy backend
           command: |

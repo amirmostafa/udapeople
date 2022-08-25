@@ -198,7 +198,7 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: amazon/aws-cli
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
@@ -206,8 +206,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            curl --silent --location https://rpm.nodesource.com/setup_17.x | bash -
-            yum -y install nodejs curl tar gzip
+            yum -y install awscli curl tar gzip
       - run:
           name: Get backend url
           command: |
@@ -221,7 +220,6 @@ jobs:
           command: |
             cd frontend
             npm install
-            npm update
             npm run build
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
             aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive

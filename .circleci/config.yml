@@ -309,11 +309,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: |
-            apt-get update
-            apt install -y awscli
-      - run:
           name: Update cloudfront distribution
           command: |
             aws cloudformation deploy \

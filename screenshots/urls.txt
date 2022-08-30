@@ -1,0 +1,7 @@
+https://github.com/amirmostafa/udapeople
+
+http://udapeople-617572c.s3-website-us-east-1.amazonaws.com/#/employees
+
+http://d3amip9aaaij1m.cloudfront.net/#/employees
+
+note: ec2 instance shutdown after 4 hour from starting the pipeline that's why it didn't work with you after the 4 hours finished!
